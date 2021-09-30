@@ -1,0 +1,29 @@
+{
+  "plugins": [
+    [
+      "module-resolver",  // エイリアスの設定
+      {
+        "root": ["./"],
+        "alias": {
+          "@": "./src/"
+        }
+      }
+    ]
+  ],
+  "presets": [
+    [
+      "@babel/preset-react", {
+        "runtime": "automatic"
+      }
+    ],
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "targets": "> 0.25%, not dead"
+      }
+    ],
+    ["@babel/preset-typescript"]
+  ]
+}
