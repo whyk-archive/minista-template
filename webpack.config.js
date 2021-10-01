@@ -2,6 +2,17 @@ const path = require('path')
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const htmlPluginList = glob.sync('**/*.tsx', {cwd: 'src/pages'}).map((file) => {
+  const extname = path.extname(file)
+  const basename = path.basename(file, extname)
+  const dirname = path.dirname(file)
+
+  return new HtmlWebpackPlugin({
+    template: path.resolve('src/pages', file),
+    filename: path.join(dirname, basename + '.html'),
+  })
+})
+
 const webpackConfig = {
   entry: './src/assets/index.ts',
   module: {
@@ -16,24 +27,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
-  plugins: [],
+  plugins: [...htmlPluginList],
 }
-
-glob
-  .sync('**/*.tsx', {
-    cwd: 'src/pages',
-  })
-  .forEach((file) => {
-    const extname = path.extname(file)
-    const basename = path.basename(file, extname)
-    const dirname = path.dirname(file)
-
-    webpackConfig.plugins.push(
-      new HtmlWebpackPlugin({
-        template: path.resolve('src/pages', file),
-        filename: path.join(dirname, basename + '.html'),
-      })
-    )
-  })
 
 module.exports = webpackConfig
