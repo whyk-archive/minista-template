@@ -3,26 +3,19 @@
   "scripts": {
     "dev": "minista",
     "build": "minista build",
-    "clean": "trash ./dist",
     "gen:imagePath": "ts-node --project tsconfig.script.json ./script/genImagePath.ts"
   },
   "volta": {
     "node": "14.17.5"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.15.0",
     "@types/react": "^17.0.17",
     "@types/react-helmet": "^6.1.2",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-module-resolver": "^4.1.0",
     "esbuild-loader": "^2.15.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "html-webpack-plugin": "^5.3.2",
     "minista": "^0.8.4",
     "thread-loader": "^3.0.4",
-    "ts-loader": "^9.2.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   }
